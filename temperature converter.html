@@ -1,0 +1,76 @@
+<html>
+<head>
+<title>temperature converter</title>
+<style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    h1 {
+      text-align: center;
+    }
+    select {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+     }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color:#4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+     }
+     label {
+      display: block;
+      margin-bottom: 10px;
+    }
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+</style>
+</head>
+<body>
+<h1>Temperature Converter</h1>
+<div class="container">
+   <label>enter temperature:</label>
+   <input type="text" id="temp" size="20"><br><br>
+   <label>enter unit:</label>
+   <select id="unit">
+      <option>celsius</option>
+      <option>farenheit</option>
+   </select><br><br>
+   <button type="button" onclick="converttemp()">convert</button><br><br>
+   <label>afterconversion</label>
+   <input type="text" id="result" maxsize="20">
+</div>
+<script>
+function converttemp()
+{
+var temperatureInput=document.getElementById("temp").value;
+var unitSelect=document.getElementById("unit").value;
+      if (isNaN(parseFloat(temperatureInput))) {
+        document.getElementById("result").value= "Invalid temperature input";
+        return;
+      }
+      
+      var temperature = parseFloat(temperatureInput);
+      
+      if (unitSelect=="celsius") {
+        var fahrenheit=(temperature * 9 / 5) + 32;
+        document.getElementById("result").value= fahrenheit.toFixed(2)+" °F";
+      } else if (unitSelect="fahrenheit") {
+        var celsius = (temperature - 32) * 5 / 9;
+        document.getElementById("result").value= celsius.toFixed(2)+" °C";
+      }
+    }
+  </script>
+</body>
+</html>
+
